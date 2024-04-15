@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<time.h>
+#include<stdlib.h>
+
+int getRandomNum(int level) {
+    return rand() % (level * 8) + 1;
+}
+
+void showQuestion(int num1, int num2) {
+    printf("%d x %d = ?\n", num1, num2);
+
+}
+
+void main() {
+    srand(time(NULL));
+
+    int answer;
+    int num=0;
+
+    for (int i = 0; i < 5; i++) {
+        int num1 = getRandomNum(i + 1);
+        int num2 = getRandomNum(i + 1);
+
+        printf("%d번째 문제\n", i + 1);
+        showQuestion(num1, num2);
+
+        printf("정답을 입력하세요(-1 입력시 종료됩니다): ");
+        scanf_s("%d", &answer);
+       
+
+        if (answer == -1) {
+            printf("프로그램을 종료합니다\n");
+            break;
+        }
+        else if (answer == num1 * num2) {
+            printf("정답입니다!^^\n");
+            num++;
+            printf("맞힌 개수: %d개\n\n", num);
+        }
+        else {
+            printf("오답입니다ㅠㅠ\n");
+            printf("맞힌 개수: %d개\n\n", num);
+        }
+
+    }
+
+
+}
