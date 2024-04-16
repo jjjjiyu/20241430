@@ -2,43 +2,32 @@
 #include<time.h>
 #include<stdlib.h>
 
-void main() {
+int main(void) {
 
    srand(time(NULL));
+
    int randomNum = rand() % 100+1;
-   int start;
    int answer;
    int chance = 5;
+   while (1) 
+   {
+     printf("남은 기회 : %d번\n", chance--);
+     printf("정답을 맞혀보세요(1~100)\n")
+     scanf_s("%d", &answer);
 
-   while (1) {
-
-      printf("1을 누르면 게임이 시작됩니다!\n");
-      scanf_s("%d", &start);
-
-      if (start == 1) {
-         printf("게임 start!\n");
-
-         while (1) {
-            printf("남은 기회 : %d번\n", chance--);
-            printf("정답을 맞혀보세요(1~100)\n");
-            scanf_s("%d", &answer);
-
-
-            if (answer == randomNum) {
-               printf("정답입니다\n");
-               break;
-            }
-            else if (answer < randomNum) {
-               printf("UP!\n");
-
-            }
-            else if (answer > randomNum) {
+     if (answer > randomNum) {
                printf("DOWN!\n");
             }
+     else if (answer < randomNum) {
+               printf("UP!\n");
+            }
+            
             else {
                printf("알 수 없는 오류가 발생했어요\n");
             }
-
+ if (answer == randomNum) {
+        printf("정답입니다\n");
+        break;
             if (chance == 0) {
                printf("모든 기회를 사용하셨습니다\n 정답은 %d였습니다", randomNum);
                break;
